@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "ZenZone",
+    "slug": "zenzone",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/zenzone.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "platforms": [
+      "android",
+      "web"
+    ],
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/zenzone.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.krithika6789.zenzone"
+    },
+    "web": {
+      "favicon": "./assets/zenzone.png",
+      "bundler": "metro"
+    }
+  }
+}
