@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenZone - Profile Setup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Profile Setup Screen */
+        .profile-setup {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Floating Background Elements */
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-1 { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+        .shape-2 { width: 120px; height: 120px; top: 60%; right: 15%; animation-delay: 2s; }
+        .shape-3 { width: 60px; height: 60px; bottom: 20%; left: 20%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Floating Bubbles */
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: bubbleFloat 8s ease-in-out infinite;
+        }
+
+        .bubble-1 { width: 40px; height: 40px; left: 10%; bottom: -50px; animation-delay: 0s; animation-duration: 8s; }
+        .bubble-2 { width: 25px; height: 25px; left: 20%; bottom: -50px; animation-delay: 1s; animation-duration: 10s; }
+        .bubble-3 { width: 60px; height: 60px; left: 35%; bottom: -50px; animation-delay: 2s; animation-duration: 12s; }
+        .bubble-4 { width: 30px; height: 30px; left: 50%; bottom: -50px; animation-delay: 3s; animation-duration: 9s; }
+        .bubble-5 { width: 45px; height: 45px; left: 65%; bottom: -50px; animation-delay: 4s; animation-duration: 11s; }
+        .bubble-6 { width: 20px; height: 20px; left: 75%; bottom: -50px; animation-delay: 5s; animation-duration: 7s; }
+        .bubble-7 { width: 35px; height: 35px; left: 85%; bottom: -50px; animation-delay: 6s; animation-duration: 13s; }
+        .bubble-8 { width: 50px; height: 50px; left: 5%; bottom: -50px; animation-delay: 7s; animation-duration: 10s; }
+
+        @keyframes bubbleFloat {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(50px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            color: #333;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-2px);
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Comfortaa', cursive;
+            font-size: 22px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            letter-spacing: 1px;
+        }
+
+        /* ZenZone Logo */
+        .zenzone-logo-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 5;
+        }
+
+        .zenzone-logo {
+            width: 160px;
+            height: auto;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+            transition: all 0.3s ease;
+        }
+
+        .zenzone-logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.15));
+        }
+
+        /* Main Content */
+        .content {
+            flex: 1;
+            padding: 0 24px 24px;
+            position: relative;
+            z-index: 5;
+            max-width: 400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .title {
+            font-family: 'Comfortaa', cursive;
+            font-size: 34px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 32px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            letter-spacing: 1px;
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Profile Picture Upload */
+        .profile-picture-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-picture-upload {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px dashed rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .profile-picture-upload:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .upload-label {
+            font-size: 14px;
+            color: #5a6c7d;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* Glass Input */
+        .glass-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            font-size: 16px;
+            color: #2c3e50;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .glass-input::placeholder {
+            color: rgba(44, 62, 80, 0.6);
+        }
+
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gender Options */
+        .gender-options {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .gender-button {
+            flex: 1;
+            padding: 16px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gender-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .gender-button.selected {
+            background: rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .gender-icon {
+            font-size: 24px;
+        }
+
+        .gender-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        /* Interests Grid */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .interest-tag {
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .interest-tag:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .interest-tag.selected {
+            background: linear-gradient(135deg, #a8e6cf 0%, #88d8c0 100%);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+            color: #2c3e50;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .continue-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .continue-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .skip-button {
+            width: 100%;
+            padding: 16px;
+            background: transparent;
+            color: #666;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .skip-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-setup">
+        <!-- Background Elements -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <!-- Floating Bubbles -->
+        <div class="bubbles">
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5"></div>
+            <div class="bubble bubble-6"></div>
+            <div class="bubble bubble-7"></div>
+            <div class="bubble bubble-8"></div>
+        </div>
+
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <button class="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="logo">ZenZone</div>
+        </div>
+
+        <!-- ZenZone Logo -->
+        <div class="zenzone-logo-section">
+            <img src="Images/Zenzone_Logo.png" alt="ZenZone Logo" class="zenzone-logo">
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1 class="title">Profile Setup</h1>
+
+            <!-- Profile Picture Upload -->
+            <div class="form-group">
+                <div class="profile-picture-section">
+                    <input type="file" id="profile-picture" accept="image/*" style="display: none;">
+                    <label for="profile-picture" class="profile-picture-upload">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="color: rgba(255, 255, 255, 0.7);" id="upload-icon">
+                            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <img id="profile-preview" style="display: none; width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </label>
+                    <span class="upload-label">Profile picture</span>
+                </div>
+            </div>
+
+            <!-- Name Input -->
+            <div class="form-group">
+                <input type="text" class="glass-input" id="name-input" placeholder="Enter your name">
+            </div>
+
+            <!-- Age Input -->
+            <div class="form-group">
+                <input type="number" class="glass-input" id="age-input" placeholder="Enter your age" min="13" max="100">
+            </div>
+
+            <!-- Gender Selection -->
+            <div class="form-group">
+                <label class="form-label">Gender</label>
+                <div class="gender-options">
+                    <button class="gender-button" data-gender="male">
+                        <span class="gender-icon">👨</span>
+                        <span class="gender-text">Male</span>
+                    </button>
+                    <button class="gender-button" data-gender="female">
+                        <span class="gender-icon">👩</span>
+                        <span class="gender-text">Female</span>
+                    </button>
+                    <button class="gender-button" data-gender="other">
+                        <span class="gender-icon">🧑</span>
+                        <span class="gender-text">Other</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Interests Selection -->
+            <div class="form-group">
+                <label class="form-label">Interests (Select multiple)</label>
+                <div class="interests-grid">
+                    <button class="interest-tag" data-interest="meditation">🧘‍♀️ Meditation</button>
+                    <button class="interest-tag" data-interest="yoga">🧘‍♂️ Yoga</button>
+                    <button class="interest-tag" data-interest="music">🎵 Music</button>
+                    <button class="interest-tag" data-interest="reading">📚 Reading</button>
+                    <button class="interest-tag" data-interest="nature">🌿 Nature</button>
+                    <button class="interest-tag" data-interest="art">🎨 Art</button>
+                    <button class="interest-tag" data-interest="fitness">💪 Fitness</button>
+                    <button class="interest-tag" data-interest="cooking">🍳 Cooking</button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions">
+                <button class="continue-button">Continue</button>
+                <button class="skip-button">Skip for now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Profile picture upload functionality
+        const profileInput = document.getElementById('profile-picture');
+        const profilePreview = document.getElementById('profile-preview');
+        const uploadIcon = document.getElementById('upload-icon');
+
+        profileInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profilePreview.src = e.target.result;
+                    profilePreview.style.display = 'block';
+                    uploadIcon.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Gender selection
+        document.querySelectorAll('.gender-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.gender-button').forEach(b => b.classList.remove('selected'));
+                button.classList.add('selected');
+            });
+        });
+
+        // Interest selection (multiple)
+        document.querySelectorAll('.interest-tag').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('selected');
+            });
+        });
+
+        // Animate logo on form interactions
+        const logo = document.querySelector('.zenzone-logo');
+        const inputs = document.querySelectorAll('input, button');
+
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                if (logo) {
+                    logo.style.transform = 'scale(1.1)';
+                    setTimeout(() => logo.style.transform = 'scale(1)', 500);
+                }
+            });
+        });
+
+        // Form data collection
+        function collectFormData() {
+            const name = document.getElementById('name-input').value.trim();
+            const age = document.getElementById('age-input').value;
+            const selectedGender = document.querySelector('.gender-button.selected');
+            const selectedInterests = Array.from(document.querySelectorAll('.interest-tag.selected'))
+                .map(tag => tag.dataset.interest);
+            const hasProfilePic = profilePreview.style.display === 'block';
+
+            return {
+                name,
+                age,
+                gender: selectedGender ? selectedGender.dataset.gender : null,
+                interests: selectedInterests,
+                hasProfilePic,
+                profilePicSrc: hasProfilePic ? profilePreview.src : null
+            };
+        }
+
+        // Form validation
+        function validateForm(data) {
+            const errors = [];
+            
+            if (!data.name) errors.push('Name is required');
+            if (!data.age || data.age < 13 || data.age > 100) errors.push('Please enter a valid age (13-100)');
+            if (!data.gender) errors.push('Please select your gender');
+            if (data.interests.length === 0) errors.push('Please select at least one interest');
+
+            return errors;
+        }
+
+        // Continue button handler
+        document.querySelector('.continue-button').addEventListener('click', () => {
+            const formData = collectFormData();
+            const errors = validateForm(formData);
+
+            if (errors.length > 0) {
+                alert('Please complete the following:\n• ' + errors.join('\n• '));
+                return;
+            }
+
+            // Store data in localStorage
+            localStorage.setItem('zenzone_profile', JSON.stringify(formData));
+
+            // Show loading state
+            const continueButton = document.querySelector('.continue-button');
+            continueButton.textContent = 'Creating your profile...';
+            continueButton.style.background = 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)';
+
+            setTimeout(() => {
+                // Redirect to completed page
+                window.location.href = 'profile-completed.html';
+            }, 1500);
+        });
+
+        // Skip button handler
+        document.querySelector('.skip-button').addEventListener('click', () => {
+            if (confirm('Are you sure you want to skip profile setup? You can always set it up later.')) {
+                // Redirect to skipped page
+                window.location.href = 'profile-skipped.html';
+            }
+        });
+
+        // Input validation styling
+        document.getElementById('name-input').addEventListener('input', function() {
+            if (this.value.trim()) {
+                this.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            }
+        });
+
+        document.getElementById('age-input').addEventListener('input', function() {
+            const age = parseInt(this.value);
+            if (age >= 13 && age <= 100) {
+                this.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            } else {
+                this.style.borderColor = 'rgba(255, 107, 107, 0.6)';
+            }
+        });
+
+        // Add smooth page load effect
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
