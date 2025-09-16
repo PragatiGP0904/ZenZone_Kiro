@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ZenBloom - Mental Health Companion",
-    "slug": "zenbloom-mental-health",
+    "name": "Affirmation Cards",
+    "slug": "affirmation-cards",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,27 +9,22 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#DDD7FF"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.zenbloom.mentalhealth"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.zenbloom.mentalhealth"
+        "backgroundColor": "#DDD7FF"
+      }
     },
     "web": {
-      "favicon": "./assets/favicon.png",
-      "bundler": "metro"
-    },
-    "plugins": [],
-    "scheme": "zenbloom"
+      "favicon": "./assets/favicon.png"
+    }
   }
 }
