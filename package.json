@@ -1,28 +1,33 @@
 {
-  "name": "profile-setup-demo",
+  "name": "affirmation-cards-app",
   "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "lottie-react": "^2.4.0",
-    "framer-motion": "^10.16.4"
-  },
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "dependencies": {
+    "@expo/metro-config": "~0.20.0",
+    "expo": "^53.0.20",
+    "expo-blur": "~14.1.5",
+    "expo-linear-gradient": "~14.1.5",
+    "metro": "^0.82.0",
+    "react": "19.0.0",
+    "react-native": "0.79.5",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-svg": "15.11.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^12.4.2",
+    "babel-preset-expo": "~13.0.0",
+    "jest": "~29.7.0",
+    "react-test-renderer": "^18.2.0"
+  },
+  "private": true
 }

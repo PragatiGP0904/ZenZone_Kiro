@@ -1,33 +1,42 @@
 {
   "expo": {
-    "name": "ZenZone",
-    "slug": "zenzone",
+    "name": "Real",
+    "slug": "Real",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/zenzone.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+    "icon": "./assets/images/icon.png",
+    "scheme": "real",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "platforms": [
-      "android",
-      "web"
-    ],
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/zenzone.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
       },
-      "package": "com.krithika6789.zenzone"
+      "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/zenzone.png",
-      "bundler": "metro"
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
