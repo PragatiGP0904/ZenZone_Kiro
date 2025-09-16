@@ -1,0 +1,28 @@
+{
+  "name": "mental-health-ai-bot",
+  "version": "1.0.0",
+  "description": "Mental Health AI Companion with Hugging Face Integration",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node run-tests.js",
+    "test:vitest": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --coverage",
+    "test:quick": "vitest run tests/Memory.test.js tests/integration.test.js"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "jsdom": "^23.0.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "vitest": "^1.0.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.0",
+    "react-chartjs-2": "^5.3.0"
+  }
+}
